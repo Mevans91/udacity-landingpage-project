@@ -18,6 +18,11 @@ body {
     color: #fff;
 }
 
+.btn {
+    height: 25px;
+    width: 150px;
+}
+
 
 /* Typeography General*/
 h1 {
