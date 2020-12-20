@@ -46,30 +46,37 @@ imperdiet porttitor tortor, eget elementum tortor mollis non.`
 
 
 function createSection() {
-    let i = 4;
-    const div = document.createElement('section');
-    div.setAttribute('id', `section${i}`);
-    div.setAttribute('data-nav', `Section ${i}`);
-    document.getElementById('mainBody').appendChild(div);
+    const i = document.getElementsByTagName('div').length + 1;
+    const sect = document.createElement('section');
+    sect.setAttribute('id', `section${i}`);
+    sect.setAttribute('data-nav', `Section ${i}`);
+    document.getElementById('mainBody').appendChild(sect);
+    createContainer(i);
     createHeader(i);
     createPara(i);
-    i++;
-    console.log('debug')
+    
+    console.log(i)
 
+}
+
+function createContainer(i) {
+    const div = document.createElement('div');
+    div.setAttribute('class', 'landingContainer', 'test');
+    document.getElementById(`section${i}`).appendChild(div);
 }
 
 function createHeader(i) {
     const head = document.createElement('h2');
     const node = document.createTextNode(`Section ${i}`);
     head.appendChild(node);
-    document.getElementById(`section${i}`).appendChild(head);
+    document.getElementById(`section${i}`).querySelector('div').appendChild(head);
 }
 
 function createPara(i) {
     const para = document.createElement('p');
     const node2 = document.createTextNode(dummyText);
     para.appendChild(node2);
-    document.getElementById(`section${i}`).appendChild(para);
+    document.getElementById(`section${i}`).querySelector('div').appendChild(para);
 
 }
 

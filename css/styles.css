@@ -18,12 +18,6 @@ body {
     color: #fff;
 }
 
-.btn {
-    height: 25px;
-    width: 150px;
-}
-
-
 /* Typeography General*/
 h1 {
     font-family: 'Fira Sans', sans-serif;
@@ -69,17 +63,17 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
-.navbar__menu ul {
+.navbarMenu ul {
     padding-left: 0;
     margin: 0;
     text-align: right;
 }
 
-.navbar__menu li {
+.navbarMenu li {
     display: inline-block;
 }
 
-.navbar__menu .menu__link {
+.navbarMenu .menuLink {
     display: block;
     padding: 1em;
     font-weight: bold;
@@ -87,14 +81,14 @@ section {
     color: #000;
 }
 
-.navbar__menu .menu__link:hover {
+.navbarMenu .menuLink:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
 }
 
 /* Header Styles */
-.page__header {
+.pageHeader {
     background: #fff;
     position: fixed;
     top: 0;
@@ -103,32 +97,32 @@ section {
 }
 
 /* Footer Styles */
-.page__footer {
+.pageFooter {
     background: #000;
     padding: 3em;
     color: #fff;
 }
 
-.page__footer p{
+.pageFooter p{
     color: #fff;
 }
 
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
-.landing__container {
+.landingContainer {
     padding: 1em;
     text-align: left;
 }
 
 @media only screen and (min-width: 35em){
-    .landing__container {
+    .landingContainer {
         max-width: 50em;
         padding: 4em;
     }
 }
 
-section:nth-of-type(even) .landing__container {
+section:nth-of-type(even) .landingContainer {
     margin-right: 0;
     margin-left: auto;
     text-align: right; 
@@ -137,7 +131,7 @@ section:nth-of-type(even) .landing__container {
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
 /* Circles appear to be random do to use of :nth-of-type psuedo class */
-section:nth-of-type(odd) .landing__container::before {
+section:nth-of-type(odd) .landingContainer::before {
     content: '';
     background: rgba(255, 255, 255, 0.187);
     position: absolute;
@@ -149,7 +143,7 @@ section:nth-of-type(odd) .landing__container::before {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(even) .landing__container::before {
+section:nth-of-type(even) .landingContainer::before {
     content: '';
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
@@ -164,7 +158,7 @@ section:nth-of-type(even) .landing__container::before {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(3n) .landing__container::after {
+section:nth-of-type(3n) .landingContainer::after {
     content: '';
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
@@ -179,7 +173,7 @@ section:nth-of-type(3n) .landing__container::after {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(3n + 1) .landing__container::after {
+section:nth-of-type(3n + 1) .landingContainer::after {
     content: '';
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
@@ -203,12 +197,12 @@ section.your-active-class {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.your-active-class .landing__container::before {
+section.your-active-class .landingContainer::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.your-active-class .landing__container::after {
+section.your-active-class .landingContainer::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }
