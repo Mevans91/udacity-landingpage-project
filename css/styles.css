@@ -90,6 +90,11 @@ section {
     transition: ease 0.3s all;
 }
 
+.current {
+    background: rgb(94, 91, 91);
+    transition: ease 0.3s all;
+}
+
 /* Header Styles */
 .pageHeader {
     background: #fff;

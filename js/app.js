@@ -31,7 +31,6 @@ function createSection() {
     const sect = document.createElement('section');
     sect.setAttribute('id', `section${i}`);
     sect.setAttribute('data-nav', `Section ${i}`);
-    // sect.setAttribute('onscroll', 'makeActive()')
     document.getElementById('mainBody').appendChild(sect);
     createContainer(i);
     createHeader(i);
@@ -92,10 +91,11 @@ function navBuild() {
     const sections = document.getElementsByTagName('section');
     for (let x = 1; x <= sections.length; x++) {
         const item = document.createElement('li');
-        const node = document.createTextNode(`Go To Section ${x}`);
+        const node = document.createTextNode(`Section ${x}`);
         // const anchor = document.getElementById(`section${x}`);
         item.appendChild(node);
         item.setAttribute('class', 'menuLink');
+        item.setAttribute('id', `link${x}`);
         item.setAttribute('onclick', `section${x}.scrollIntoView()`);
         nav.appendChild(item);
     } 
@@ -109,10 +109,13 @@ window.addEventListener('scroll', function() {
     for (let i = 1; i <= sections.length; i++) {
         const query = document.querySelector(`#section${i}`);
         const rect = query.getBoundingClientRect();
+        const link = document.querySelector(`#link${i}`);
         if (rect.top > -100 && rect.top <= 400) {
             query.setAttribute('class', 'active');
+            link.setAttribute('class', 'menuLink current');
         } else {
             query.setAttribute('class', 'section');
+            link.setAttribute('class', 'menuLink');
         }
     }
 })
