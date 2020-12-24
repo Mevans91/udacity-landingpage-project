@@ -1,16 +1,9 @@
 /**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
-*/
+ * These two variables are used to fill the sections with content as they're created.
+ * They're somewhat large, so I set them outside the functions, to keep the code compact
+ * and clean.
+*/ 
 
-/**
- * Define Global Variables
- * 
-*/
-const fragment = document.createDocumentFragment();
 const dummyText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. 
 Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. 
@@ -24,15 +17,7 @@ ultricies molestie semper in tellus. Sed congue et odio sed euismod.`;
 const dummyText2 = `Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum 
 lacus aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae 
 rhoncus purus. Vestibulum fermentum consectetur porttitor. Suspendisse 
-imperdiet porttitor tortor, eget elementum tortor mollis non.`
-
-
-
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
+imperdiet porttitor tortor, eget elementum tortor mollis non.`;
 
 /**
  * The createSection function uses the respectively named functions
@@ -41,20 +26,18 @@ imperdiet porttitor tortor, eget elementum tortor mollis non.`
  * It then appends the complete section into the main body container. Finally, 
  * it updates the nav to reflect the current number and names of sections.  
  */
-
 function createSection() {
     const i = document.getElementsByTagName('section').length + 1;
     const sect = document.createElement('section');
     sect.setAttribute('id', `section${i}`);
     sect.setAttribute('data-nav', `Section ${i}`);
+    // sect.setAttribute('onscroll', 'makeActive()')
     document.getElementById('mainBody').appendChild(sect);
     createContainer(i);
     createHeader(i);
     createPara(i);
     createPara2(i);
     updateNav();
-    console.log(i)
-
 }
 
 function createContainer(i) {
@@ -98,14 +81,6 @@ function updateNav() {
 }
 
 /**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
-// build the nav
-
-/**
  * This navBuild function grabs the unordered list by it's id,
  * and all the sections by their tag name. It then loops through
  * all the current sections and creates a list item for each section,
@@ -126,23 +101,18 @@ function navBuild() {
     } 
 }
 
-// createSection();
 navBuild();
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
+// This event listener loops through the sections, checks which one is on the top of the screen
+// and then sets the class as active. Otherwise, it sets the class to an inactive class.
+window.addEventListener('scroll', function() {
+    const sections = document.getElementsByTagName('section');    
+    for (let i = 1; i <= sections.length; i++) {
+        const query = document.querySelector(`#section${i}`);
+        const rect = query.getBoundingClientRect();
+        if (rect.top > -100 && rect.top <= 400) {
+            query.setAttribute('class', 'active');
+        } else {
+            query.setAttribute('class', 'section');
+        }
+    }
+})
